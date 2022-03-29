@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarnpkg install
+  /usr/local/bin/node /usr/local/bin/yarn install
 
 PATH: 
   /Users/a446010/Documents/Canales/MB_DEV_ENV/apache-maven-3.2.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
