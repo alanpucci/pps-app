@@ -1,13 +1,20 @@
 import styled from "styled-components/native";
 
-const sizes = {full:'100%', xl:'80%', lg:'60%', md:'50%', sm:'30%'}
 interface ButtonProps{
     size: 'full' | 'xl' | 'lg' | 'md' | 'sm';
 }
 
 const StyledButton = styled.TouchableOpacity<ButtonProps>`
     height:40px;
-    width:${({size})=>sizes[size]}%;
+    width:${({size}) => {
+    switch (size) {
+        case 'full':return 100
+        case 'xl': return 80
+        case 'lg': return 60
+        case 'md': return 50
+        case 'sm': return 30
+        default:return 100
+    }}}%;
     border-radius:10px;
     align-items:center;
     justify-content:center;

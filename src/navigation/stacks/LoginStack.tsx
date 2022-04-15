@@ -1,12 +1,11 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from '../../components/screens/LoginScreen/LoginScreen.component';
 import { Screens } from '../Screens';
-import LoginSuccessScreen from '../../components/screens/LoginSuccessScreen/LoginSuccessScreen.component';
 import React from 'react';
 
 export type LoginStackParamList = {
-    Login: undefined;
-    LoginSuccess:undefined;
+    [Screens.LOGIN]: undefined | {id:number};
+    [Screens.LOGIN_SUCCESS]: undefined;
 };
 const Stack = createStackNavigator<LoginStackParamList>();
 

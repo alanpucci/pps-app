@@ -8,6 +8,6 @@ export const StyledView = styled.View`
 `
 
 export const StyledTextContainer = styled.View`
-    height:20%;
-    justify-content:space-around;
+    justify-content:space-evenly;
+    height:200px;
 `

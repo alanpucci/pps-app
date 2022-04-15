@@ -12,12 +12,13 @@ export const auth = getAuth(app);
 
 const InitApp = ()=> {
   const data:any = useSelector<any>(store=>store.auth);
+
   return (
       <NavigationContainer>
-        {data.success ? 
-          <SuccessStack /> :  
-          <LoginStack />
-        }
+          {data.success ? 
+            <SuccessStack /> :  
+            <LoginStack />
+          }
       </NavigationContainer>
   );
 }

@@ -1,8 +1,9 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { Control, Controller } from 'react-hook-form'
 import Input from '../../atoms/Input/Input.component'
 import { View, TextInputProps } from 'react-native';
-import { StyledErrorText } from './ControlledInput.styled';
+import { StyledErrorText } from './ControlledPasswordInput.styled';
+import { TextInput } from 'react-native-paper';
 
 interface ControlledInputProps extends TextInputProps{
   control:Control<any,any>;
@@ -11,7 +12,8 @@ interface ControlledInputProps extends TextInputProps{
   error?:any;
 }
 
-const ControlledInput:FC<ControlledInputProps> = ({control,name,required, error,...props}) => {
+const ControlledPasswordInput:FC<ControlledInputProps> = ({control,name,required, error,...props}) => {
+  const [secure, setSecure] = useState(true)
   return (
     <View>
         <Controller 
@@ -19,6 +21,8 @@ const ControlledInput:FC<ControlledInputProps> = ({control,name,required, error,
             rules={{required:required}}
             render={({ field: { onChange, onBlur, value } }) => (
                 <Input
+                  right={<TextInput.Icon name={secure?"eye":"eye-off"} onPress={()=>setSecure(!secure)} />}
+                  secureTextEntry={secure}
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
@@ -27,9 +31,9 @@ const ControlledInput:FC<ControlledInputProps> = ({control,name,required, error,
                 )}
             name={name}
         />
-        {error && <StyledErrorText>Es requerido</StyledErrorText>}
+        {error && <StyledErrorText>{error.message || 'Es requerido'}</StyledErrorText>}
     </View>
   )
 }
 
-export default ControlledInput
+export default ControlledPasswordInput

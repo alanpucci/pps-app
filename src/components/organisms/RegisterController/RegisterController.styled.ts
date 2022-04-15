@@ -12,10 +12,4 @@ export const StyledView = styled.View`
 export const StyledModal = styled(Modal)`
     justify-content:flex-end;
     margin:0;
-    z-index:1;
-`
-
-export const StyledRoundedButtonContainer = styled.View`
-    flex-direction:row;
-    justify-content:space-around;
 `

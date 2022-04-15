@@ -6,11 +6,19 @@ import Paragraph from '../../atoms/Paragraph/Paragraph.component';
 import { StyledTextContainer, StyledView } from './LoginSuccessScreen.styled';
 import { useDispatch } from 'react-redux';
 import { handleLogout } from '../../../redux/authReducer';
+import { Screens } from '../../../navigation/Screens';
+import { RouteProp, useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { LoginStackParamList } from '../../../navigation/stacks/LoginStack';
+import Modal from '../../molecules/Modal/Modal.component';
+type LoginScreenProps = StackNavigationProp<LoginStackParamList, Screens.LOGIN> & RouteProp<LoginStackParamList>;
 
-const LoginSuccessScreen = ({navigation}) => {
+const LoginSuccessScreen = () => {
+  const navigation = useNavigation<LoginScreenProps>();
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
+    // navigation.navigate('Login',{id:1})
     dispatch(handleLogout());
   }
 

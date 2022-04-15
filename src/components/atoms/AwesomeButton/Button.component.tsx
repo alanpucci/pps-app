@@ -1,20 +1,16 @@
 import React, { FC } from 'react'
-import Button from 'react-native-really-awesome-button/src/themes/blue';
 import { AwesomeButtonProps } from 'react-native-really-awesome-button';
+import { StyledButton } from './Button.styled';
 
 interface ButtonProps extends AwesomeButtonProps{
-    title:string;
     onPress:()=>void;
-    width?:number;
-    height?:number;
-    textSize?:number;
     rounded?:boolean;
-    progress?:boolean;
+    type?: 'primary' | 'secondary';
 }
 
 const AwesomeButton:FC<ButtonProps> = (props) => {
   return (
-      <Button 
+      <StyledButton type={props.type} {...props}
         width={props.width} borderRadius={props.rounded?40:0}
         textSize={props.textSize} height={props.height} progress={props.progress}
         onPress={next => {
@@ -24,8 +20,8 @@ const AwesomeButton:FC<ButtonProps> = (props) => {
           }, props.progress ? 1000 : 0);
         }}
       >
-        {props.title}
-      </Button>
+        {props.children}
+      </StyledButton>
   )
 }
 
