@@ -17,7 +17,7 @@ export default function App() {
   useEffect(()=>{
     setTimeout(() => {
       setLottieLoad(true)
-    }, 1000);
+    }, 6000);
   },[])
 
   if(!lottieLoad){
