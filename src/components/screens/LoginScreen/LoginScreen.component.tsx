@@ -53,7 +53,6 @@ const LoginScreen:FC<LoginScreenProps> = ({navigation}) => {
     const handleFastSignIn = (data:FormData) => {
         setValue("email", data.email);
         setValue("password", data.password);
-        dispatch(handleLogin(data));
     }
 
 	return (

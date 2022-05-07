@@ -4,6 +4,7 @@ import { showMessage } from "react-native-flash-message";
 import { FormData } from "../components/screens/LoginScreen/LoginScreen.component";
 import { auth } from "../InitApp";
 import { sleep } from "../utils/utils";
+import { errorHandler } from '../utils/ErrorsHandler';
 
 const initialState = {
     user:{},
@@ -53,11 +54,12 @@ export const fetchInitialState = () => ({
 export const handleLogin = (data:FormData) =>  async dispatch => {
     try {
         dispatch(fetchInit());
-        const res = await signInWithEmailAndPassword(auth,data.email,data.password);
         await sleep();
+        const res = await signInWithEmailAndPassword(auth,data.email,data.password);
         dispatch(fetchSuccess(res.user));
     } catch (error:any) {
-        showMessage({type:"danger", message:"Credenciales inválidas", description:"Usuario y/o contraseña incorrectos"})
+        console.log(error)
+        errorHandler(error.code);
         dispatch(fetchError(error.message));
     }
 }
@@ -65,12 +67,12 @@ export const handleLogin = (data:FormData) =>  async dispatch => {
 export const handleRegister = (data:FormData) =>  async dispatch => {
     try {
         dispatch(fetchInit());
-        const res = await createUserWithEmailAndPassword(auth,data.email,data.password);
         await sleep();
+        const res = await createUserWithEmailAndPassword(auth,data.email,data.password);
         dispatch(fetchInitialState());
         showMessage({type:"success", message:"Exito", description:'Usuario creado exitosamente'})
     } catch (error:any) {
-        showMessage({type:"danger", message:"Errpr", description:error.message})
+        errorHandler(error.code);
         dispatch(fetchError(error.message));
     }
 }
@@ -81,6 +83,7 @@ export const handleLogout = () => async dispatch => {
         await signOut(auth);
         dispatch(fetchInitialState());
     } catch (error:any) {
+        errorHandler(error.code);
         dispatch(fetchError(error.message));
     }
 }

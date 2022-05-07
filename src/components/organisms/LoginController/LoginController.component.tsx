@@ -25,9 +25,9 @@ const LoginController:FC<LoginControllerProps> = ({isVisible, control,handleSubm
       <StyledView >
           <Heading color="secondary">Inicio rápido</Heading>
           <StyledRoundedButtonContainer>
-            <AwesomeButton type="secondary" width={60} height={60} rounded onPress={()=>fastSignIn({email:"admin@gmail.com", password:"Admin1234"})}>1</AwesomeButton>
-            <AwesomeButton type="secondary" width={60} height={60} rounded onPress={()=>fastSignIn({email:"tecnico@gmail.com", password:"Tecnico1234"})}>2</AwesomeButton>
-            <AwesomeButton type="secondary" width={60} height={60} rounded onPress={()=>fastSignIn({email:"cliente@gmail.com", password:"Cliente1234"})}>3</AwesomeButton>
+            <AwesomeButton type="secondary" width={90} height={60} textSize={18} rounded onPress={()=>fastSignIn({email:"admin@gmail.com", password:"Admin1234"})}>Admin</AwesomeButton>
+            <AwesomeButton type="secondary" width={90} height={60} textSize={18} rounded onPress={()=>fastSignIn({email:"tecnico@gmail.com", password:"Tecnico1234"})}>Tecnico</AwesomeButton>
+            <AwesomeButton type="secondary" width={90} height={60} textSize={18} rounded onPress={()=>fastSignIn({email:"cliente@gmail.com", password:"Cliente1234"})}>Usuario</AwesomeButton>
           </StyledRoundedButtonContainer>
           <ControlledInput error={errors?.email} required autoCapitalize='sentences' name="email" placeholder='Email' control={control} />
           <ControlledPasswordInput error={errors?.password} required autoCapitalize='none' name="password" placeholder='Password' control={control} />
